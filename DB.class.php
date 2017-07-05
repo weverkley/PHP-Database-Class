@@ -62,6 +62,7 @@ class DB{
         unset($options['operator']);
         unset($options['condition']);
 
+        $string = null;
         foreach ($options as $k => $v) {
             if(count($this->_where) == 0) $string = " WHERE ".$k." ".$operator." '".$v."'";
             else $string .= " ".$condition." ".$k." ".$operator." '".$v."'";
@@ -72,7 +73,13 @@ class DB{
         return $db;
     }
 
-    public function orderBy(){}
+    public function orderBy($columns, $type = 'ASC'){
+        $db = self::instance();
+        if (is_array($columns))
+            $columns = implode($columns, ", ");
+        $this->_select .= " ORDER BY ".$columns." ".$type;
+        return $db;
+    }
 
     public function limit(){}
 

@@ -10,4 +10,7 @@ require_once 'DB.class.php';
 // var_dump(DB::table('anuncio')->select()->fetchAll());
 // var_dump(DB::table('anuncio')->select(array('id', 'data_criacao'))->fetchAll());
 // var_dump(DB::table('anuncio')->select('id, data_criacao')->fetchAll());
-// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->fetchAll());
+// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->fetchAll());
+// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy('id, cidade')->fetchAll());
+// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'))->fetchAll());
+// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'), 'DESC')->fetchAll());
