@@ -8,7 +8,12 @@ class DB{
     private $_where = null;
 
     private function __construct() {
-        self::$_connection = new Pdo('mysql:host=localhost;dbname=guiatop;charset=utf8', 'root', '');
+        try {
+            self::$_connection = new Pdo('mysql:host=localhost;dbname=guiatop;charset=utf8', 'root', '');
+            self::$_connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        } catch (Exception  $e) {
+            throw new Exception ($e->getMessage(), 1);
+        }
     }
 
     public static function instance() {
