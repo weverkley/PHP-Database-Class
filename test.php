@@ -6,11 +6,16 @@ require_once 'DB.class.php';
 
 
 // select
-// var_dump(DB::table('anuncio')->select()->fetch());
-// var_dump(DB::table('anuncio')->select()->fetchAll());
-// var_dump(DB::table('anuncio')->select(array('id', 'data_criacao'))->fetchAll());
-// var_dump(DB::table('anuncio')->select('id, data_criacao')->fetchAll());
-// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->fetchAll());
-// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy('id, cidade')->fetchAll());
-// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'))->fetchAll());
-// var_dump(DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'), 'DESC')->fetchAll());
+// DB::table('anuncio')->select()->fetch();
+// DB::table('anuncio')->select()->fetchAll();
+// DB::table('anuncio')->select(array('id', 'data_criacao'))->fetchAll();
+// DB::table('anuncio')->select('id, data_criacao')->fetchAll();
+// DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->fetchAll();
+// DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy('id, cidade')->fetchAll();
+// DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'))->fetchAll();
+// DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'), 'DESC')->fetchAll();
+
+
+// update
+// DB::table('anuncio')->update(array('nome' => 'wever'))->run();
+// DB::table('anuncio')->update(array('nome' => 'wever'))->run()->affectedRows();

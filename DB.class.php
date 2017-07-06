@@ -3,9 +3,11 @@ class DB{
     private static $_instance;
     private static $_connection;
     private static $_table = null;
+    private $_query = null;
     private $_insert = null;
     private $_select = null;
     private $_where = null;
+    private $_update = null;
 
     private function __construct() {
         try {
@@ -37,7 +39,9 @@ class DB{
 
     public function run() {
         $db = self::instance();
-        self::$_connection->query($this->_insert);
+        $q = ($this->_insert)? $this->_insert : $this->_update;
+        $this->_query = self::$_connection->prepare($q);
+        $this->_query->execute();
         return $db;
     }
 
@@ -108,5 +112,22 @@ class DB{
                 // by field names as object
                 return $result->fetchAll(PDO::FETCH_OBJ);   
         }
+    }
+
+    public function update(array $fields){
+        $db = self::instance();
+        
+        $this->_update = "UPDATE ".self::$_table." SET ";
+        $string = array();
+        foreach ($fields as $k => $v)
+            $string[] = $k." = '".$v."'";
+
+        $this->_update .= implode($string, ", ");
+
+        return $db;
+    }
+
+    public function affectedRows(){
+        return $this->_query->rowCount();
     }
 }
