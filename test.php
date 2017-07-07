@@ -19,3 +19,8 @@ require_once 'DB.class.php';
 // update
 // DB::table('anuncio')->update(array('nome' => 'wever'))->run();
 // DB::table('anuncio')->update(array('nome' => 'wever'))->run()->affectedRows();
+
+
+// delete
+
+var_dump(DB::table('anuncio')->delete()->where(array('id' => 15))->run());
