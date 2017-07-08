@@ -7,6 +7,9 @@ class DB{
     private $_where = null;
     private $_result = null;
 
+    /**
+     * Setup connection
+     */
     private function __construct() {
         try {
             self::$_connection = new Pdo('mysql:host=localhost;dbname=guiatop;charset=utf8', 'root', '');
@@ -174,7 +177,21 @@ class DB{
         return $db;
     }
 
-    public function limit(){}
+    /**
+     * Limit the return of selected rows
+     * in select query's
+     * 
+     * @param string $values separated by comma
+     * @param array $values 3D array with
+     * @return object
+     */
+    public function limit($values){
+        $db = self::instance();
+        if (is_array($values))
+            $values = implode($values, ', ');
+        $this->_query .= " LIMIT ".$values;
+        return $db;
+    }
 
     /**
      * Fetch first row

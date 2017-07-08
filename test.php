@@ -14,6 +14,9 @@ require_once 'DB.class.php';
 // DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy('id, cidade')->fetchAll();
 // DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'))->fetchAll();
 // DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'), 'DESC')->fetchAll();
+// DB::table('anuncio')->select()->limit(2)->fetchAll();
+// DB::table('anuncio')->select()->limit('1, 2')->fetchAll();
+// DB::table('anuncio')->select()->limit(array('1', '2'))->fetchAll();
 
 
 // update
@@ -22,5 +25,5 @@ require_once 'DB.class.php';
 
 
 // delete
-
-var_dump(DB::table('anuncio')->delete()->where(array('id' => 15))->run());
+// var_dump(DB::table('anuncio')->delete()->run());
+// var_dump(DB::table('anuncio')->delete()->where(array('id' => 15))->run());
