@@ -1,5 +1,13 @@
 <?php
+$GLOBALS['config']['db'] = array(
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => '123456',
+    'db' => 'sistema'
+);
+
 require_once 'DB.class.php';
+
 // insert
 // DB::table('condominio')->insert(array('nome' => 'wever'))->run();
 // DB::table('anuncio')->insert(array('nome' => 'wever'))->run()->insertId();
