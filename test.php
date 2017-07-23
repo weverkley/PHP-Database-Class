@@ -35,3 +35,7 @@ require_once 'DB.class.php';
 // delete
 // var_dump(DB::table('anuncio')->delete()->run());
 // var_dump(DB::table('anuncio')->delete()->where(array('id' => 15))->run());
+
+
+// raw query
+// var_dump(DB::query("SELECT user,host FROM mysql.user")->fetch(PDO::FETCH_ASSOC));
