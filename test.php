@@ -24,7 +24,7 @@ require_once 'DB.class.php';
 // DB::table('anuncio')->select()->where(array('id' => '5', 'operator' => '>'))->where(array('cidade' => 'Campos Belos'))->orderBy(array('id', 'cidade'), 'DESC')->fetchAll();
 // DB::table('anuncio')->select()->limit(2)->fetchAll();
 // DB::table('anuncio')->select()->limit('1, 2')->fetchAll();
-var_dump(DB::table('produto')->select()->fetchAll(1));
+// DB::table('produto')->select()->fetchAll(1);
 
 
 // update
