@@ -25,6 +25,15 @@ class DB
         }
     }
 
+	/**
+	 * Return string query
+	 * @return String
+	 */
+    public function getQuery() {
+  		$db = self::instance();
+  		return $this->_query;
+  	}
+
     /**
      * Return existing instance of DB class
      * or make a new one
@@ -44,7 +53,7 @@ class DB
      *
      * @return object
      */
-    public function query(String $query)
+    public static function query(String $query)
     {
         $db = self::instance();
         $result = self::$_connection->prepare($query);
@@ -137,6 +146,7 @@ class DB
         $db = self::instance();
         $this->_result = self::$_connection->prepare($this->_query);
         $this->_result->execute();
+		$this->reset();
         return $db;
     }
 
@@ -246,6 +256,7 @@ class DB
     public function fetch()
     {
         $this->_result = self::$_connection->query($this->_query)->fetch(PDO::FETCH_ASSOC);
+		$this->reset();
         return $this->_result;
     }
 
@@ -267,16 +278,23 @@ class DB
         switch ($resultType) {
             case 1:
                 $option = PDO::FETCH_ASSOC;
-                // no break
+                break;
             case 2:
                 $option = PDO::FETCH_NUM;
-                // no break
+                break;
             case 3:
                 $option = null;
-                // no break
+                break;
             case 4:
                 $option = PDO::FETCH_OBJ;
+				break;
         }
-        return ($option)? $this->_result->fetchAll($option) : $this->_result->fetchAll();
+		$this->_result = ($option)? $this->_result->fetchAll($option) : $this->_result->fetchAll();
+		$this->reset();
+        return $this->_result;
     }
+
+	private function reset() {
+		$this->_where = null;
+	}
 }
